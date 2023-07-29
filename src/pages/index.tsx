@@ -72,7 +72,7 @@ export default function Home() {
       </section>
 
       {(isVisible || isSeen) && (
-        <div>
+        <>
           <section className="flex flex-col min-h-screen justify-center gap-8 border-b border-b-red-800">
             <div>
               <h3 className="text-[#A60505] text-center text-3xl font-semibold">
@@ -130,7 +130,7 @@ export default function Home() {
               </button>
             </div>
           </section>
-        </div>
+        </>
       )}
 
       <Dialog delay={40 * 1000} />
