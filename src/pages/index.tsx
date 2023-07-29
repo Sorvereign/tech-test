@@ -1,30 +1,12 @@
 "use client";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useEffect, useState } from "react";
 import Head from "next/head";
 import { Dialog } from "../components/Dialog";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const delay = 9 * 60 * 1000 + 35 * 1000;
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isSeen, setIsSeen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, delay);
-    const isAlreadySeen = localStorage.getItem("isSeen");
-    if (isAlreadySeen !== "true") {
-      localStorage.setItem("isSeen", "true");
-    } else {
-      setIsSeen(true);
-    }
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <main
       className={`flex min-h-screen flex-col items-center gap-8 justify-center py-24 md:p-24 bg-black ${inter.className}`}
@@ -61,77 +43,71 @@ export default function Home() {
             muted
           />
 
-          {(isVisible || isSeen) && (
-            <section>
-              <button className="bg-gradient-to-r from-red-600 via-red-900 to-black font-semibold w-[15ch] sm:w-[25ch] py-4 px-2 text-white">
-                Learn More
-              </button>
-            </section>
-          )}
+          <section>
+            <button className="bg-gradient-to-r from-red-600 via-red-900 to-black font-semibold w-[15ch] sm:w-[25ch] py-4 px-2 text-white">
+              Learn More
+            </button>
+          </section>
         </div>
       </section>
 
-      {(isVisible || isSeen) && (
-        <>
-          <section className="flex flex-col min-h-screen justify-center gap-8 border-b border-b-red-800">
+      <>
+        <section className="flex flex-col min-h-screen justify-center gap-8 border-b border-b-red-800">
+          <div>
+            <h3 className="text-[#A60505] text-center text-3xl font-semibold">
+              Any of this sound familiar?
+            </h3>
             <div>
-              <h3 className="text-[#A60505] text-center text-3xl font-semibold">
-                Any of this sound familiar?
-              </h3>
-              <div>
-                <div className="bg-red-200/10 p-8 text-gray-300 rounded-sm lg:w-[80ch]">
-                  <ul className="list-disc">
-                    <li>You feel like you were not doing enough?</li>
-                    <li>You ever felt like you doing something wrong?</li>
-                    <li>
-                      Felt like things aren’t going well with your partner?
-                    </li>
-                  </ul>
-                </div>
+              <div className="bg-red-200/10 p-8 text-gray-300 rounded-sm lg:w-[80ch]">
+                <ul className="list-disc">
+                  <li>You feel like you were not doing enough?</li>
+                  <li>You ever felt like you doing something wrong?</li>
+                  <li>Felt like things aren’t going well with your partner?</li>
+                </ul>
               </div>
             </div>
-            <p className="text-gray-300 text-center pb-4">
-              If so, just know I’ve been there and you’re not alone...
+          </div>
+          <p className="text-gray-300 text-center pb-4">
+            If so, just know I’ve been there and you’re not alone...
+          </p>
+        </section>
+
+        <section className="flex flex-col md:grid md:grid-cols-2 items-center gap-8 border-b border-b-red-800 lg:w-10/12 py-16">
+          <Image src="/image.png" height={320} width={320} alt="Image" />
+          <div className="flex flex-col gap-2 items-center md:items-start">
+            <p className="text-[#A60505] text-left font-semibold">
+              WHY THIS WILL WORK FOR YOU
             </p>
-          </section>
-
-          <section className="flex flex-col md:grid md:grid-cols-2 items-center gap-8 border-b border-b-red-800 lg:w-10/12 py-16">
-            <Image src="/image.png" height={320} width={320} alt="Image" />
-            <div className="flex flex-col gap-2 items-center md:items-start">
-              <p className="text-[#A60505] text-left font-semibold">
-                WHY THIS WILL WORK FOR YOU
-              </p>
-              <h3 className="text-white text-left text-3xl font-semibold w-2/3">
-                You are someone that wants a happy partner
-              </h3>
-              <div>
-                <div className="p-8 text-gray-300 rounded-sm">
-                  <ul className="list-disc">
-                    <li>Wants a great sexual life</li>
-                    <li>Better sexual connection with your partner</li>
-                    <li>Make them all happy ;)</li>
-                  </ul>
-                </div>
+            <h3 className="text-white text-left text-3xl font-semibold w-2/3">
+              You are someone that wants a happy partner
+            </h3>
+            <div>
+              <div className="p-8 text-gray-300 rounded-sm">
+                <ul className="list-disc">
+                  <li>Wants a great sexual life</li>
+                  <li>Better sexual connection with your partner</li>
+                  <li>Make them all happy ;)</li>
+                </ul>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section>
-            <div className="flex flex-col gap-4 w-full text-center">
-              <h1 className="text-white text-3xl font-semibold mx-auto w-full md:w-full pb-8">
-                Get this promotion now!
-              </h1>
-            </div>
-            <div className="flex flex-col gap-8 mb-32 text-center lg:mb-0 justify-center items-center">
-              <Image src="/order.png" height={320} width={320} alt="Image" />
+        <section>
+          <div className="flex flex-col gap-4 w-full text-center">
+            <h1 className="text-white text-3xl font-semibold mx-auto w-full md:w-full pb-8">
+              Get this promotion now!
+            </h1>
+          </div>
+          <div className="flex flex-col gap-8 mb-32 text-center lg:mb-0 justify-center items-center">
+            <Image src="/order.png" height={320} width={320} alt="Image" />
 
-              <button className="bg-gradient-to-r from-red-600 via-red-900 to-black font-semibold w-1/2 sm:w-full py-4 px-2 text-white">
-                Get promotion!
-              </button>
-            </div>
-          </section>
-        </>
-      )}
+            <button className="bg-gradient-to-r from-red-600 via-red-900 to-black font-semibold w-1/2 sm:w-full py-4 px-2 text-white">
+              Get promotion!
+            </button>
+          </div>
+        </section>
+      </>
 
       <Dialog delay={40 * 1000} />
     </main>
